@@ -52,40 +52,35 @@ function typeWriter(text, element, callback) {
 
 // Handle "No" button click for mouse and touch events
 function handleNoButtonClick(event) {
-    event.preventDefault(); // Prevent the default behavior of clicking (e.g., link redirection)
+    // Prevent any unwanted behavior (e.g., navigation)
+    event.preventDefault();
 }
 
 // Adding both touch and mouse event listeners for the "No" button
-noButton.addEventListener('click', handleNoButtonClick);  // For mouse click (does nothing)
-noButton.addEventListener('touchend', handleNoButtonClick);  // For touch (does nothing)
+noButton.addEventListener('click', handleNoButtonClick);
+noButton.addEventListener('touchend', handleNoButtonClick);
 
-// Event listeners for the "No" button to move it randomly when hovered or touched
+// Function to ensure the "No" button stays within the visible screen
 function moveNoButtonRandomly() {
-    const container = document.querySelector('.button-container');
-    const containerRect = container.getBoundingClientRect();
-    const buttonRect = noButton.getBoundingClientRect();
+    // Get the viewport dimensions
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
 
-    // Calculate the available space for the button to move
-    const maxX = containerRect.width - buttonRect.width - yesButton.offsetWidth; // Prevent overlap with "Yes" button
-    const maxY = containerRect.height - buttonRect.height;
+    // Get the dimensions of the "No" button
+    const buttonWidth = noButton.offsetWidth;
+    const buttonHeight = noButton.offsetHeight;
 
-    // Ensure the button remains within the visible screen area
-    const maxWidth = Math.max(window.innerWidth - buttonRect.width, maxX);
-    const maxHeight = Math.max(window.innerHeight - buttonRect.height, maxY);
+    // Calculate the maximum position the button can occupy within the screen
+    const maxX = viewportWidth - buttonWidth; // Prevent the button from going out of the right edge
+    const maxY = viewportHeight - buttonHeight; // Prevent the button from going out of the bottom edge
 
-    const newX = Math.random() * maxWidth;
-    const newY = Math.random() * maxHeight;
+    // Randomize new position within bounds
+    const newX = Math.random() * maxX;
+    const newY = Math.random() * maxY;
 
-    // Prevent the button from going out of bounds on smaller screens
-    if (newX + buttonRect.width > window.innerWidth) {
-        newX = window.innerWidth - buttonRect.width;
-    }
-    if (newY + buttonRect.height > window.innerHeight) {
-        newY = window.innerHeight - buttonRect.height;
-    }
-
+    // Apply the new position
     noButton.style.transition = 'left 0.2s, top 0.2s'; // Smooth transition for movement
-    noButton.style.position = 'absolute';  // Ensure absolute positioning
+    noButton.style.position = 'absolute'; // Ensure absolute positioning
     noButton.style.left = `${newX}px`;
     noButton.style.top = `${newY}px`;
 }
@@ -94,7 +89,7 @@ function moveNoButtonRandomly() {
 noButton.addEventListener('mouseover', moveNoButtonRandomly); // For mouse hover
 noButton.addEventListener('touchstart', (event) => {
     event.preventDefault(); // Prevent default behavior (scrolling, zooming, etc.)
-    moveNoButtonRandomly();  // Handle touch event to move the button
+    moveNoButtonRandomly(); // Handle touch event to move the button
 });
 
 // Event listener for "Yes" button click
@@ -116,7 +111,7 @@ yesButton.addEventListener('click', () => {
         basta i still admiring you no matter what happens, pero sabi mo hanggang kaibigan lang muna edi Go ako HAHAHA, pero malay mo meron ng
         kunting spark jan so anong malay ko anong malay natin dba??HAHA😂 tsaka pag nagkita tayo ulit wag mo naman ako saksakin baka madedz agad ako nyaaan
         HAHAHA Ayun lang pasensya kana huh?? nagintay ka ng matagal tas wala din pala, ang dami kasing error sa uploading ng files at codes HAHAHA pero natapos ko naman so Ayun sinend ko na din 
-        Ayun lang napuyat kapa tuloy ng kaunti HAHAHAHA sorry!!?. AND PROMISE ANDITO LANG AKO PALAGI AWAN PAG HINDI MO PA AKO NAGING PALAGI NYAN HAHAHA!!. GOODNIGHT🫶`;
+        Ayun lang napuyat kapa tuloy ng kaunti HAHAHAHA sorry!!?. GOODNIGHT🫶`;
 
         // Ensure the second message is below the first one
         typeWriter(secondMessage, messageContainer, () => {
