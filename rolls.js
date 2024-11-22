@@ -52,7 +52,6 @@ function typeWriter(text, element, callback) {
 
 // Handle "No" button click for mouse and touch events
 function handleNoButtonClick(event) {
-    // This function does nothing now (No link or redirection)
     event.preventDefault(); // Prevent the default behavior of clicking (e.g., link redirection)
 }
 
@@ -70,12 +69,20 @@ function moveNoButtonRandomly() {
     const maxX = containerRect.width - buttonRect.width - yesButton.offsetWidth; // Prevent overlap with "Yes" button
     const maxY = containerRect.height - buttonRect.height;
 
-    // Adjust for mobile responsiveness by considering smaller screen sizes
-    const maxWidth = Math.min(window.innerWidth, maxX);
-    const maxHeight = Math.min(window.innerHeight, maxY);
+    // Ensure the button remains within the visible screen area
+    const maxWidth = Math.max(window.innerWidth - buttonRect.width, maxX);
+    const maxHeight = Math.max(window.innerHeight - buttonRect.height, maxY);
 
     const newX = Math.random() * maxWidth;
     const newY = Math.random() * maxHeight;
+
+    // Prevent the button from going out of bounds on smaller screens
+    if (newX + buttonRect.width > window.innerWidth) {
+        newX = window.innerWidth - buttonRect.width;
+    }
+    if (newY + buttonRect.height > window.innerHeight) {
+        newY = window.innerHeight - buttonRect.height;
+    }
 
     noButton.style.transition = 'left 0.2s, top 0.2s'; // Smooth transition for movement
     noButton.style.position = 'absolute';  // Ensure absolute positioning
@@ -109,7 +116,7 @@ yesButton.addEventListener('click', () => {
         basta i still admiring you no matter what happens, pero sabi mo hanggang kaibigan lang muna edi Go ako HAHAHA, pero malay mo meron ng
         kunting spark jan so anong malay ko anong malay natin dba??HAHA😂 tsaka pag nagkita tayo ulit wag mo naman ako saksakin baka madedz agad ako nyaaan
         HAHAHA Ayun lang pasensya kana huh?? nagintay ka ng matagal tas wala din pala, ang dami kasing error sa uploading ng files at codes HAHAHA pero natapos ko naman so Ayun sinend ko na din 
-        Ayun lang napuyat kapa tuloy ng kaunti HAHAHAHA sorry!!?. GOODNIGHT🫶`;
+        Ayun lang napuyat kapa tuloy ng kaunti HAHAHAHA sorry!!?. AND PROMISE ANDITO LANG AKO PALAGI AWAN PAG HINDI MO PA AKO NAGING PALAGI NYAN HAHAHA!!. GOODNIGHT🫶`;
 
         // Ensure the second message is below the first one
         typeWriter(secondMessage, messageContainer, () => {
