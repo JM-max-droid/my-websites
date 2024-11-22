@@ -95,16 +95,21 @@ yesButton.addEventListener('click', () => {
     const firstMessage = `HI Rollyn, Ms Belle, MARYAFEEE GOODMORNING 1:45 NA EE HAHAHA😂`;
     typeWriter(firstMessage, messageContainer, () => {
         // After first message finishes, type the second message
-        const secondMessage = `Hi ROllyn tinapos ko tlaga to para wala lang para sabihin sayo na Gusto Tlaga kitaaaaa anong magagawa ko ee nahulog na tlaga ako sayooo HAHAHA
+        const secondMessage = `<br>Hi ROllyn tinapos ko tlaga to para wala lang para sabihin sayo na Gusto Tlaga kitaaaaa anong magagawa ko ee nahulog na tlaga ako sayooo HAHAHA
 basta i still admiring you no matter what happens, pero sabi mo hanggang kaibigan lang muna edi Go ako HAHAHA, pero malay mo meron ng
 kunting spark jan so anong malay ko anong malay natin dba??HAHA😂 tsaka pag nagkita tayo ulit wag mo naman ako saksakin baka madedz agad ako nyaaan
 HAHAHA Ayun lang pasensya kana huh?? nagintay ka ng matagal tas wala din pala, ang dami kasing error sa uploading ng files at codes HAHAHA pero natapos ko naman so Ayun sinend ko na din 
-Ayun lang napuyat kapa tuloy ng kaunti HAHAHAHA sorry!!?. PROMISE ANDITO LANG AKO PALAGI, AWAN PAG HINDI PAKO ANG NAGING PALAGI MO NYAN HAHAHA😂!!. GOODNIGHT🫶`;
+Ayun lang napuyat kapa tuloy ng kaunti HAHAHAHA sorry!!?. GOODNIGHT🫶`;
 
         // Ensure the second message is below the first one
-        typeWriter(secondMessage, messageContainer, () => {});
+        typeWriter(secondMessage, messageContainer, () => {
+            // Add margin to the message container after typing finishes
+            messageContainer.style.margin = '0 20px'; // Add margin to both sides of the message
+            // Ensure the page is scrollable to view the full message
+            document.body.style.overflowY = 'scroll'; // Enable scrolling
+        });
     });
 
-    // Add margin to the message container
-    messageContainer.style.margin = '0 20px'; // Add margin to both sides of the message
+    // Initially allow the page to be scrollable when the message is long
+    document.body.style.overflowY = 'scroll'; // Enable scrolling
 });
