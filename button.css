@@ -8,7 +8,7 @@ body {
     font-family: 'Arial', sans-serif;
     color: #fff;
     text-align: center;
-    overflow: hidden; /* Ensure sparkles don't overflow the body */
+    overflow: hidden;
 }
 
 .container {
@@ -102,5 +102,28 @@ button {
     100% {
         transform: scale(1.5);
         opacity: 0;
+    }
+}
+
+/* Typewriter Effect */
+.typewriter {
+    overflow: hidden; /* Ensures text is clipped */
+    white-space: nowrap; /* Keeps text on a single line */
+    width: 0; /* Starts with 0 width */
+    animation: typing 6s steps(50) 1s 1 normal both, blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink-caret {
+    50% {
+        border-color: transparent;
     }
 }
