@@ -111,7 +111,7 @@ yesButton.addEventListener('click', () => {
         basta i still admiring you no matter what happens, pero sabi mo hanggang kaibigan lang muna edi Go ako HAHAHA, pero malay mo meron ng
         kunting spark jan so anong malay ko anong malay natin dba??HAHA😂 tsaka pag nagkita tayo ulit wag mo naman ako saksakin baka madedz agad ako nyaaan
         HAHAHA Ayun lang pasensya kana huh?? nagintay ka ng matagal tas wala din pala, ang dami kasing error sa uploading ng files at codes HAHAHA pero natapos ko naman so Ayun sinend ko na din 
-        Ayun lang napuyat kapa tuloy ng kaunti HAHAHAHA sorry!!?. GOODNIGHT🫶`;
+        Ayun lang napuyat kapa tuloy ng kaunti HAHAHAHA sorry!!?. AND PROMISE ANDITO LANG AKO PALAGI AWAN PAG HINDI MO PA AKO NAGING PALAGI NYAN HAHAHA!!. GOODNIGHT🫶`;
 
         // Ensure the second message is below the first one
         typeWriter(secondMessage, messageContainer, () => {
