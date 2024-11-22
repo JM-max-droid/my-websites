@@ -50,27 +50,10 @@ function typeWriter(text, element, callback) {
     type();
 }
 
-// Event listeners for the "No" button
-noButton.addEventListener('mouseover', () => {
-    const container = document.querySelector('.button-container');
-    const containerRect = container.getBoundingClientRect();
-    const buttonRect = noButton.getBoundingClientRect();
-
-    const maxX = containerRect.width - buttonRect.width;
-    const maxY = containerRect.height - buttonRect.height;
-
-    const newX = Math.random() * maxX;
-    const newY = Math.random() * maxY;
-
-    noButton.style.transition = 'left 0.2s, top 0.2s'; // Smooth transition for movement
-    noButton.style.left = `${newX}px`;
-    noButton.style.top = `${newY}px`;
-});
-
 // Handle "No" button click for mouse and touch events
 function handleNoButtonClick() {
-    // Example action for "No" button click, like hiding the button or doing something else
-    console.log('No button clicked!');
+    // Perform an action, like redirecting to another page or doing something else
+    window.location.href = "https://www.example.com";  // Example: Redirect to another URL
 }
 
 // Adding both touch and mouse event listeners for the "No" button
@@ -78,6 +61,32 @@ noButton.addEventListener('click', handleNoButtonClick);  // For mouse click
 noButton.addEventListener('touchend', (event) => {
     event.preventDefault();  // Prevent default behavior (scrolling, zooming, etc.)
     handleNoButtonClick();   // Handle the touch event
+});
+
+// Event listeners for the "No" button to move it randomly when hovered or touched
+function moveNoButtonRandomly() {
+    const container = document.querySelector('.button-container');
+    const containerRect = container.getBoundingClientRect();
+    const buttonRect = noButton.getBoundingClientRect();
+
+    // Prevent "No" button from going outside the container and overlapping the "Yes" button
+    const maxX = containerRect.width - buttonRect.width - yesButton.offsetWidth; // Prevent overlap with "Yes" button
+    const maxY = containerRect.height - buttonRect.height;
+
+    const newX = Math.random() * maxX;
+    const newY = Math.random() * maxY;
+
+    noButton.style.transition = 'left 0.2s, top 0.2s'; // Smooth transition for movement
+    noButton.style.position = 'absolute';  // Ensure absolute positioning
+    noButton.style.left = `${newX}px`;
+    noButton.style.top = `${newY}px`;
+}
+
+// Add event listeners for mouse hover and touch to move the "No" button randomly
+noButton.addEventListener('mouseover', moveNoButtonRandomly); // For mouse hover
+noButton.addEventListener('touchstart', (event) => {
+    event.preventDefault(); // Prevent default behavior (scrolling, zooming, etc.)
+    moveNoButtonRandomly();  // Handle touch event to move the button
 });
 
 // Event listener for "Yes" button click
@@ -96,10 +105,10 @@ yesButton.addEventListener('click', () => {
     typeWriter(firstMessage, messageContainer, () => {
         // After first message finishes, type the second message
         const secondMessage = `<br>Hi ROllyn tinapos ko tlaga to para wala lang para sabihin sayo na Gusto Tlaga kitaaaaa anong magagawa ko ee nahulog na tlaga ako sayooo HAHAHA
-basta i still admiring you no matter what happens, pero sabi mo hanggang kaibigan lang muna edi Go ako HAHAHA, pero malay mo meron ng
-kunting spark jan so anong malay ko anong malay natin dba??HAHA😂 tsaka pag nagkita tayo ulit wag mo naman ako saksakin baka madedz agad ako nyaaan
-HAHAHA Ayun lang pasensya kana huh?? nagintay ka ng matagal tas wala din pala, ang dami kasing error sa uploading ng files at codes HAHAHA pero natapos ko naman so Ayun sinend ko na din 
-Ayun lang napuyat kapa tuloy ng kaunti HAHAHAHA sorry!!?. GOODNIGHT🫶`;
+        basta i still admiring you no matter what happens, pero sabi mo hanggang kaibigan lang muna edi Go ako HAHAHA, pero malay mo meron ng
+        kunting spark jan so anong malay ko anong malay natin dba??HAHA😂 tsaka pag nagkita tayo ulit wag mo naman ako saksakin baka madedz agad ako nyaaan
+        HAHAHA Ayun lang pasensya kana huh?? nagintay ka ng matagal tas wala din pala, ang dami kasing error sa uploading ng files at codes HAHAHA pero natapos ko naman so Ayun sinend ko na din 
+        Ayun lang napuyat kapa tuloy ng kaunti HAHAHAHA sorry!!?. GOODNIGHT🫶`;
 
         // Ensure the second message is below the first one
         typeWriter(secondMessage, messageContainer, () => {
