@@ -2,17 +2,22 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh; /* Ensures the background covers the full height */
     margin: 0;
     background: linear-gradient(135deg, #8e44ad, #3498db);
     font-family: 'Arial', sans-serif;
     color: #fff;
     text-align: center;
-    overflow: hidden;
+    overflow-y: auto; /* Allow vertical scrolling */
+    background-attachment: fixed; /* Keeps the background fixed during scrolling */
 }
 
 .container {
     text-align: center;
+    padding: 20px;
+    max-width: 100%;
+    position: relative;
+    z-index: 1; /* Ensure content is above the background */
 }
 
 h1 {
@@ -22,8 +27,9 @@ h1 {
 
 .button-container {
     display: flex;
-    gap: 20px;
+    gap: 20px; /* Space between buttons */
     position: relative;
+    justify-content: center; /* Align buttons horizontally in the center */
 }
 
 button {
@@ -46,7 +52,6 @@ button {
 
 #no-button {
     background-color: #e74c3c;
-    position: absolute;
 }
 
 #no-button:hover {
@@ -125,5 +130,48 @@ button {
 @keyframes blink-caret {
     50% {
         border-color: transparent;
+    }
+}
+
+/* Responsive adjustments for smaller devices */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em; /* Adjust the title font size */
+    }
+
+    button {
+        padding: 12px 20px;
+        font-size: 1em; /* Smaller button text */
+    }
+
+    #surprise img {
+        width: 250px; /* Adjust image size for mobile */
+    }
+
+    #surprise p {
+        font-size: 1.2em; /* Smaller text for mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5em; /* Adjust for very small screens */
+    }
+
+    .button-container {
+        flex-direction: column; /* Stack buttons vertically */
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 1em; /* Further reduce button size */
+    }
+
+    #surprise img {
+        width: 200px; /* Adjust image for very small screens */
+    }
+
+    #surprise p {
+        font-size: 1.1em; /* Further reduce font size */
     }
 }
